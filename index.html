@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nevio Company - Artist & Talent Management</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nevio: {
+                            dark: '#0B0F17',
+                            card: '#151C2C',
+                            border: '#232D42',
+                            gold: '#F59E0B',
+                            goldHover: '#D97706',
+                            accent: '#3B82F6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0B0F17;
+            color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(21, 28, 44, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF 20%, #F59E0B 70%, #D97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.25);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0B0F17;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #232D42;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #F59E0B;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar selection:bg-nevio-gold selection:text-black">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-nevio-gold to-yellow-200 flex items-center justify-center font-black text-black text-xl shadow-lg group-hover:scale-105 transition-transform">
+                        N
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-xl tracking-wider text-white group-hover:text-nevio-gold transition-colors">NEVIO</span>
+                        <span class="text-[10px] text-gray-400 tracking-widest uppercase -mt-1">Management</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                    <a href="#about" class="hover:text-nevio-gold transition-colors">Tentang Kami</a>
+                    <a href="#artists" class="hover:text-nevio-gold transition-colors">Talenta & Artist</a>
+                    <a href="#projects" class="hover:text-nevio-gold transition-colors">Proyek Utama</a>
+                    <a href="#media-hub" class="hover:text-nevio-gold transition-colors">Media & Sosmed</a>
+                    <a href="#services" class="hover:text-nevio-gold transition-colors">Layanan</a>
+                </div>
+
+                <!-- CTA & Social Quick Links -->
+                <div class="hidden md:flex items-center gap-4">
+                    <div class="flex items-center gap-2 border-r border-gray-800 pr-4">
+                        <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-800/80 hover:bg-red-600 hover:text-white text-gray-300 flex items-center justify-center transition-all" title="YouTube">
+                            <i class="fab font-bold fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/rayhannahyaz1" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-800/80 hover:bg-pink-600 hover:text-white text-gray-300 flex items-center justify-center transition-all" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@rayhannahyaz1" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-800/80 hover:bg-black hover:text-nevio-gold text-gray-300 flex items-center justify-center transition-all" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                    <a href="#contact" class="bg-nevio-gold hover:bg-nevio-goldHover text-gray-950 font-bold px-5 py-2.5 rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 text-sm flex items-center gap-2">
+                        <span>Hubungi Kami</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white p-2 rounded-lg focus:outline-none">
+                        <i class="fas fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-gray-800 px-4 pt-4 pb-6 space-y-4">
+            <a href="#about" class="block text-gray-300 hover:text-nevio-gold font-medium py-2">Tentang Kami</a>
+            <a href="#artists" class="block text-gray-300 hover:text-nevio-gold font-medium py-2">Talenta & Artist</a>
+            <a href="#projects" class="block text-gray-300 hover:text-nevio-gold font-medium py-2">Proyek Utama</a>
+            <a href="#media-hub" class="block text-gray-300 hover:text-nevio-gold font-medium py-2">Media & Sosmed</a>
+            <a href="#services" class="block text-gray-300 hover:text-nevio-gold font-medium py-2">Layanan</a>
+            
+            <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" class="w-9 h-9 rounded-full bg-red-600/20 text-red-500 flex items-center justify-center">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rayhannahyaz1" target="_blank" class="w-9 h-9 rounded-full bg-pink-600/20 text-pink-500 flex items-center justify-center">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@rayhannahyaz1" target="_blank" class="w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                <a href="#contact" class="bg-nevio-gold text-gray-950 font-bold px-4 py-2 rounded-xl text-sm">Booking Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden">
+        <!-- Ambient Background Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-nevio-gold/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-nevio-gold/30 text-nevio-gold text-xs sm:text-sm font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-nevio-gold animate-ping"></span>
+                        <span>Official Artist & Project Management</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none">
+                        NEVIO <br>
+                        <span class="gold-gradient-text">COMPANY</span>
+                    </h1>
+
+                    <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Agensi manajemen talenta dan ekosistem kreator independen yang menaungi talenta berbakat seperti <strong class="text-white">Rayhan Nahya Z</strong>. Kami mengelola karya musik, konten digital, produksi kreatif, dan kolaborasi brand strategis.
+                    </p>
+
+                    <!-- Hero Call-to-Actions -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                        <a href="#artists" class="bg-nevio-gold hover:bg-nevio-goldHover text-gray-950 font-extrabold px-8 py-4 rounded-xl shadow-xl transition-all hover:scale-105 active:scale-95 flex items-center gap-3">
+                            <i class="fas fa-star text-sm"></i>
+                            <span>Jelajahi Artist</span>
+                        </a>
+                        <a href="#media-hub" class="glass-panel hover:bg-gray-800/80 text-white font-bold px-8 py-4 rounded-xl border border-gray-700 transition-all hover:scale-105 flex items-center gap-3">
+                            <i class="fab fa-youtube text-red-500 text-lg"></i>
+                            <span>Lihat Karya YouTube</span>
+                        </a>
+                    </div>
+
+                    <!-- Key Metrics / Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-800/80">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white">100K+</div>
+                            <div class="text-xs sm:text-sm text-gray-400 mt-1">Total Followers & Subs</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-nevio-gold">10+</div>
+                            <div class="text-xs sm:text-sm text-gray-400 mt-1">Proyek Creative Released</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white">100%</div>
+                            <div class="text-xs sm:text-sm text-gray-400 mt-1">Dedicated Artist Growth</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Showcase Card (Rayhan Nahya Z) -->
+                <div class="lg:col-span-5 relative">
+                    <div class="glass-panel rounded-3xl p-6 relative overflow-hidden border border-gray-700/50 shadow-2xl glow-effect group">
+                        
+                        <!-- Badge Top Right -->
+                        <div class="absolute top-4 right-4 bg-red-600/90 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-md z-20">
+                            <i class="fas fa-fire"></i> Featured Artist
+                        </div>
+
+                        <!-- Artist Image Overlay -->
+                        <div class="relative w-full h-96 rounded-2xl overflow-hidden mb-6 bg-gray-900 border border-gray-800">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=900&q=80" 
+                                 alt="Rayhan Nahya Z Showcase" 
+                                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-nevio-dark via-transparent to-transparent"></div>
+                            
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <span class="bg-nevio-gold/20 text-nevio-gold border border-nevio-gold/40 text-xs font-semibold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                                    Musician & Content Creator
+                                </span>
+                                <h3 class="text-2xl font-black text-white mt-1">Rayhan Nahya Z</h3>
+                            </div>
+                        </div>
+
+                        <!-- Mini Direct Social Bar -->
+                        <div class="space-y-3">
+                            <p class="text-xs text-gray-400 font-medium">Connect langsung dengan Rayhan Nahya Z:</p>
+                            <div class="grid grid-cols-3 gap-2">
+                                <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-2.5 px-2 bg-red-950/40 hover:bg-red-600/30 border border-red-500/30 rounded-xl text-xs font-semibold text-red-400 hover:text-white transition-all">
+                                    <i class="fab fa-youtube text-base"></i>
+                                    <span>YouTube</span>
+                                </a>
+                                <a href="https://www.instagram.com/rayhannahyaz1" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-2.5 px-2 bg-pink-950/40 hover:bg-pink-600/30 border border-pink-500/30 rounded-xl text-xs font-semibold text-pink-400 hover:text-white transition-all">
+                                    <i class="fab fa-instagram text-base"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="https://www.tiktok.com/@rayhannahyaz1" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-2.5 px-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded-xl text-xs font-semibold text-gray-200 transition-all">
+                                    <i class="fab fa-tiktok text-base"></i>
+                                    <span>TikTok</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 relative bg-nevio-card/40 border-y border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-nevio-gold font-extrabold">Tentang Management</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Membangun Karir Talenta Berkelanjutan & Berdampak</p>
+                <div class="w-16 h-1 bg-nevio-gold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-panel p-8 rounded-2xl border border-gray-800 hover:border-nevio-gold/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-nevio-gold/10 text-nevio-gold flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Artist Development</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Kami fokus pada pengembangan karakter, persona, musikalitas, dan strategi branding visual untuk talenta seperti Rayhan Nahya Z.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-panel p-8 rounded-2xl border border-gray-800 hover:border-nevio-gold/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Content & Video Production</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Memproduksi video musik, vlog, konten kreatif TikTok, dan seri video YouTube resolusi tinggi dengan sinematografi modern.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-panel p-8 rounded-2xl border border-gray-800 hover:border-nevio-gold/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Brand Partnerships</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Menghubungkan talenta kami dengan brand ternama untuk proyek kolaborasi, endorsement, penampilan panggung, dan kampanye media sosial.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTISTS SECTION -->
+    <section id="artists" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-nevio-gold font-bold">Roster Talenta</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Daftar Artist & Creator</h2>
+                </div>
+                <div class="text-gray-400 text-sm max-w-md">
+                    Nevio Company menaungi kreator dan seniman muda potensial untuk mengoptimalkan jangkauan karya mereka.
+                </div>
+            </div>
+
+            <!-- Spotlight Artist: Rayhan Nahya Z Card -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-gray-700/60 relative overflow-hidden bg-gradient-to-br from-nevio-card via-nevio-dark to-nevio-card">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Artist Image -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="aspect-square rounded-2xl overflow-hidden border-2 border-nevio-gold/30 shadow-xl relative group">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Rayhan Nahya Z" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full border border-white/10 font-medium">
+                                    <i class="fas fa-check-circle text-nevio-gold mr-1"></i> Verified Talent
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artist Bio & Social Links -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-nevio-gold">Main Managed Artist</span>
+                            <h3 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Rayhan Nahya Z</h3>
+                            <p class="text-gray-400 text-sm sm:text-base mt-3 leading-relaxed">
+                                Rayhan Nahya Z adalah talenta serba bisa di bawah naungan Nevio Company yang aktif memproduksi karya musik, ide kreatif visual, serta konten video edukatif dan hiburan di berbagai platform digital.
+                            </p>
+                        </div>
+
+                        <!-- Category Badges -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-800 text-gray-300 text-xs px-3 py-1.5 rounded-lg border border-gray-700">Musician & Performer</span>
+                            <span class="bg-gray-800 text-gray-300 text-xs px-3 py-1.5 rounded-lg border border-gray-700">Digital Content Creator</span>
+                            <span class="bg-gray-800 text-gray-300 text-xs px-3 py-1.5 rounded-lg border border-gray-700">Brand Ambassador</span>
+                        </div>
+
+                        <!-- Direct Social Buttons Grid -->
+                        <div class="pt-4 border-t border-gray-800 space-y-3">
+                            <h4 class="text-xs font-bold text-gray-300 uppercase tracking-wider">Kunjungi Channel & Media Sosial Resmi:</h4>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <!-- YouTube Direct Link -->
+                                <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 rounded-xl bg-red-600/10 border border-red-500/30 hover:bg-red-600 text-red-400 hover:text-white transition-all group">
+                                    <div class="w-8 h-8 rounded-lg bg-red-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                        <i class="fab fa-youtube"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <div class="text-xs font-extrabold truncate">YouTube</div>
+                                        <div class="text-[10px] opacity-80 truncate">@rayhannahyaz1</div>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-xs ml-auto opacity-70"></i>
+                                </a>
+
+                                <!-- Instagram Direct Link -->
+                                <a href="https://www.instagram.com/rayhannahyaz1" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 rounded-xl bg-pink-600/10 border border-pink-500/30 hover:bg-pink-600 text-pink-400 hover:text-white transition-all group">
+                                    <div class="w-8 h-8 rounded-lg bg-pink-600 text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                        <i class="fab fa-instagram"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <div class="text-xs font-extrabold truncate">Instagram</div>
+                                        <div class="text-[10px] opacity-80 truncate">@rayhannahyaz1</div>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-xs ml-auto opacity-70"></i>
+                                </a>
+
+                                <!-- TikTok Direct Link -->
+                                <a href="https://www.tiktok.com/@rayhannahyaz1" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 rounded-xl bg-gray-800 border border-gray-600 hover:bg-white hover:text-black text-gray-200 transition-all group">
+                                    <div class="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                        <i class="fab fa-tiktok"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <div class="text-xs font-extrabold truncate">TikTok</div>
+                                        <div class="text-[10px] opacity-80 truncate">@rayhannahyaz1</div>
+                                    </div>
+                                    <i class="fas fa-external-link-alt text-xs ml-auto opacity-70"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Modal trigger for full details -->
+                        <div class="pt-2">
+                            <button onclick="openArtistModal('rayhan')" class="w-full sm:w-auto bg-nevio-gold/10 hover:bg-nevio-gold text-nevio-gold hover:text-black font-bold px-6 py-3 rounded-xl border border-nevio-gold/40 transition-all text-sm flex items-center justify-center gap-2">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Lihat Profil Lengkap & Portfolio Karya</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Roster Placeholder / Future Talents -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                <!-- Roster 2 Placeholder -->
+                <div class="glass-panel p-5 rounded-2xl border border-gray-800 opacity-75 hover:opacity-100 transition-opacity">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 font-bold text-xl">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] bg-nevio-gold/20 text-nevio-gold px-2 py-0.5 rounded uppercase font-semibold">Upcoming Talent</span>
+                            <h4 class="text-lg font-bold text-white mt-0.5">Nevio Sound Project</h4>
+                            <p class="text-xs text-gray-400">Collaborative Music Collective</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roster 3 Placeholder -->
+                <div class="glass-panel p-5 rounded-2xl border border-gray-800 opacity-75 hover:opacity-100 transition-opacity">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-xl bg-gray-800 flex items-center justify-center text-gray-500 font-bold text-xl">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded uppercase font-semibold">In Production</span>
+                            <h4 class="text-lg font-bold text-white mt-0.5">Nevio Creative Studio</h4>
+                            <p class="text-xs text-gray-400">Digital Media Production</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Join Management CTA -->
+                <div class="glass-panel p-5 rounded-2xl border border-dashed border-gray-700 hover:border-nevio-gold flex items-center justify-center text-center cursor-pointer group" onclick="scrollToContact()">
+                    <div>
+                        <i class="fas fa-plus-circle text-2xl text-nevio-gold mb-2 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="text-sm font-bold text-white">Bergabung Bersama Nevio</h4>
+                        <p class="text-xs text-gray-400 mt-1">Kirimkan Demo atau Portofolio Anda</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 bg-nevio-card/30 border-y border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-nevio-gold font-bold">Karya & Output</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Proyek Pilihan Rayhan Nahya Z & Nevio</h2>
+                <p class="text-gray-400 text-sm mt-3">Rangkaian proyek rilis musik, produksi video, dan rilisan kreatif terbaru.</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project Card 1 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-gray-800 hover:border-nevio-gold/50 transition-all duration-300 group">
+                    <div class="relative h-52 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Official Music Video Release" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-nevio-dark via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md">
+                            <i class="fab fa-youtube mr-1"></i> YouTube Release
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <span class="text-xs text-nevio-gold font-semibold uppercase">Music Video Showcase</span>
+                        <h3 class="text-lg font-bold text-white group-hover:text-nevio-gold transition-colors">Rayhan Nahya Z - Original Track Project</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Produksi audio video eksklusif hasil garapan tim kreatif Nevio Management.
+                        </p>
+                        <div class="pt-3 border-t border-gray-800 flex items-center justify-between">
+                            <span class="text-[11px] text-gray-400">Artist: Rayhan Nahya Z</span>
+                            <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" class="text-xs text-nevio-gold font-bold flex items-center gap-1 hover:underline">
+                                <span>Tonton Video</span>
+                                <i class="fas fa-play text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-gray-800 hover:border-nevio-gold/50 transition-all duration-300 group">
+                    <div class="relative h-52 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Digital Series Content" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-nevio-dark via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-pink-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md">
+                            <i class="fab fa-instagram mr-1"></i> Instagram Reels Series
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <span class="text-xs text-nevio-gold font-semibold uppercase">Creative Content</span>
+                        <h3 class="text-lg font-bold text-white group-hover:text-nevio-gold transition-colors">Short Form Visual Vlogs & Creative Clips</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Serial konten berdurasi pendek secara rutin diunggah di kanal Instagram & TikTok Rayhan Nahya Z.
+                        </p>
+                        <div class="pt-3 border-t border-gray-800 flex items-center justify-between">
+                            <span class="text-[11px] text-gray-400">Platform: IG & TikTok</span>
+                            <a href="https://www.instagram.com/rayhannahyaz1" target="_blank" class="text-xs text-nevio-gold font-bold flex items-center gap-1 hover:underline">
+                                <span>Lihat Konten</span>
+                                <i class="fas fa-external-link-alt text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-gray-800 hover:border-nevio-gold/50 transition-all duration-300 group">
+                    <div class="relative h-52 bg-gray-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Live Performance Project" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-nevio-dark via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-yellow-500 text-black text-[10px] font-bold px-2.5 py-1 rounded-md">
+                            <i class="fas fa-microphone-alt mr-1"></i> Live Session
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <span class="text-xs text-nevio-gold font-semibold uppercase">Performance</span>
+                        <h3 class="text-lg font-bold text-white group-hover:text-nevio-gold transition-colors">Nevio Live Session & Acoustic Cover</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            Penampilan akustik live dengan aransemen musik yang diproduksi secara profesional.
+                        </p>
+                        <div class="pt-3 border-t border-gray-800 flex items-center justify-between">
+                            <span class="text-[11px] text-gray-400">YouTube Channel</span>
+                            <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" class="text-xs text-nevio-gold font-bold flex items-center gap-1 hover:underline">
+                                <span>Tonton Sekarang</span>
+                                <i class="fab fa-youtube text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MEDIA & SOCIAL HUB SECTION -->
+    <section id="media-hub" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-nevio-gold font-bold">Koneksi Media Sosial</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Medsos & YouTube Hub</h2>
+                <p class="text-gray-400 text-sm mt-3">Akses langsung ke seluruh platform resmi Rayhan Nahya Z yang dikelola oleh Nevio Company.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- YouTube Box -->
+                <div class="glass-panel p-8 rounded-3xl border border-red-500/20 hover:border-red-500/60 transition-all flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute -right-6 -bottom-6 text-red-600/10 text-9xl font-black group-hover:scale-110 transition-transform">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    
+                    <div class="space-y-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-red-600/20 text-red-500 flex items-center justify-center text-3xl font-bold">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-red-400 uppercase tracking-wider">Official Channel</span>
+                            <h3 class="text-2xl font-black text-white mt-1">Rayhan Nahya Z YouTube</h3>
+                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                                Nikmati rilisan video musik, vlogs harian, behind the scenes, dan konten eksklusif di YouTube.
+                            </p>
+                        </div>
+                        <div class="bg-gray-900/80 rounded-xl p-4 border border-gray-800 text-xs font-mono text-gray-300">
+                            URL: https://www.youtube.com/@rayhannahyaz1
+                        </div>
+                    </div>
+
+                    <div class="pt-6 relative z-10">
+                        <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" rel="noopener" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-youtube text-lg"></i>
+                            <span>Subscribe Channel YouTube</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Instagram Box -->
+                <div class="glass-panel p-8 rounded-3xl border border-pink-500/20 hover:border-pink-500/60 transition-all flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute -right-6 -bottom-6 text-pink-600/10 text-9xl font-black group-hover:scale-110 transition-transform">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+
+                    <div class="space-y-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-pink-600/20 text-pink-500 flex items-center justify-center text-3xl font-bold">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-pink-400 uppercase tracking-wider">Official Instagram</span>
+                            <h3 class="text-2xl font-black text-white mt-1">@rayhannahyaz1</h3>
+                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                                Dapatkan update kegiatan harian, foto dokumentasi, panggung, dan aktivitas terbarunya secara langsung.
+                            </p>
+                        </div>
+                        <div class="bg-gray-900/80 rounded-xl p-4 border border-gray-800 text-xs font-mono text-gray-300">
+                            URL: instagram.com/rayhannahyaz1
+                        </div>
+                    </div>
+
+                    <div class="pt-6 relative z-10">
+                        <a href="https://www.instagram.com/rayhannahyaz1" target="_blank" rel="noopener" class="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:opacity-90 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-instagram text-lg"></i>
+                            <span>Follow Instagram</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- TikTok Box -->
+                <div class="glass-panel p-8 rounded-3xl border border-gray-700 hover:border-white/50 transition-all flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute -right-6 -bottom-6 text-white/5 text-9xl font-black group-hover:scale-110 transition-transform">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+
+                    <div class="space-y-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-white/10 text-white flex items-center justify-center text-3xl font-bold">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-gray-300 uppercase tracking-wider">Official TikTok</span>
+                            <h3 class="text-2xl font-black text-white mt-1">@rayhannahyaz1</h3>
+                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                                Video pendek viral, tren musik terbaru, hingga hiburan kreatif setiap minggunya.
+                            </p>
+                        </div>
+                        <div class="bg-gray-900/80 rounded-xl p-4 border border-gray-800 text-xs font-mono text-gray-300">
+                            URL: tiktok.com/@rayhannahyaz1
+                        </div>
+                    </div>
+
+                    <div class="pt-6 relative z-10">
+                        <a href="https://www.tiktok.com/@rayhannahyaz1" target="_blank" rel="noopener" class="w-full bg-white hover:bg-gray-200 text-black font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fab fa-tiktok text-lg"></i>
+                            <span>Follow TikTok</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-nevio-card/40 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-widest text-nevio-gold font-bold">Layanan Manajemen</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Apa Yang Nevio Company Sediakan</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="glass-panel p-6 rounded-2xl border border-gray-800 hover:border-nevio-gold/40 transition-all">
+                    <i class="fas fa-bullhorn text-2xl text-nevio-gold mb-4"></i>
+                    <h3 class="text-base font-bold text-white mb-2">Endorsement & Campaign</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Pengelolaan kerjasama promosi produk dan brand ambassador bersama Rayhan Nahya Z.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-panel p-6 rounded-2xl border border-gray-800 hover:border-nevio-gold/40 transition-all">
+                    <i class="fas fa-guitar text-2xl text-nevio-gold mb-4"></i>
+                    <h3 class="text-base font-bold text-white mb-2">Event Live Booking</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Undang artist kami untuk tampil di festival, konser musik, gathering, atau event kampus.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-panel p-6 rounded-2xl border border-gray-800 hover:border-nevio-gold/40 transition-all">
+                    <i class="fas fa-compact-disc text-2xl text-nevio-gold mb-4"></i>
+                    <h3 class="text-base font-bold text-white mb-2">Music Production</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Arranging, recording, mixing, mastering, hingga distribusi digital musik resmi.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-panel p-6 rounded-2xl border border-gray-800 hover:border-nevio-gold/40 transition-all">
+                    <i class="fas fa-chart-line text-2xl text-nevio-gold mb-4"></i>
+                    <h3 class="text-base font-bold text-white mb-2">Digital Marketing Strategy</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Optimalisasi algoritma platform YouTube, Instagram, dan TikTok untuk jangkauan maksimal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & BOOKING SECTION -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Contact Info Left -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs uppercase tracking-widest text-nevio-gold font-bold">Inquiry & Booking</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">Hubungi Nevio Management</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Apakah Anda ingin mengundang Rayhan Nahya Z untuk perform, mengadakan kolaborasi brand, atau pertanyaan seputar manajemen? Kirimkan pesan Anda melalui formulir resmi ini.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 p-4 rounded-xl glass-panel border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-nevio-gold/20 text-nevio-gold flex items-center justify-center shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-gray-400 uppercase font-semibold">Email Management</div>
+                                <div class="text-sm font-bold text-white">contact@nevio.co.id</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl glass-panel border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-nevio-gold/20 text-nevio-gold flex items-center justify-center shrink-0">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-gray-400 uppercase font-semibold">WhatsApp Official</div>
+                                <div class="text-sm font-bold text-white">+62 812-3456-7890 (Management)</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl glass-panel border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-nevio-gold/20 text-nevio-gold flex items-center justify-center shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-gray-400 uppercase font-semibold">Base Headquarters</div>
+                                <div class="text-sm font-bold text-white">Jakarta, Indonesia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Right -->
+                <div class="lg:col-span-7">
+                    <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-gray-800 relative">
+                        
+                        <!-- Notification Message Box -->
+                        <div id="form-toast" class="hidden mb-6 p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs flex items-center gap-3">
+                            <i class="fas fa-check-circle text-base"></i>
+                            <span>Pesan Anda telah berhasil dikirim ke Management Nevio! Kami akan segera menghubungi Anda.</span>
+                        </div>
+
+                        <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-2">Nama Lengkap / Instansi</label>
+                                    <input type="text" required placeholder="Masukkan nama atau nama perusahaan" class="w-full bg-gray-900 border border-gray-700 focus:border-nevio-gold rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-2">Email Kontak</label>
+                                    <input type="email" required placeholder="email@domain.com" class="w-full bg-gray-900 border border-gray-700 focus:border-nevio-gold rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-2">Jenis Keperluan</label>
+                                    <select class="w-full bg-gray-900 border border-gray-700 focus:border-nevio-gold rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                                        <option value="booking">Event Live Booking / Performance</option>
+                                        <option value="endorse">Brand Collaboration / Endorsement</option>
+                                        <option value="media">Media Interview / Press</option>
+                                        <option value="other">Pertanyaan Lainnya</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-2">Nomor Telepon / WhatsApp</label>
+                                    <input type="tel" required placeholder="0812xxxxxxxx" class="w-full bg-gray-900 border border-gray-700 focus:border-nevio-gold rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-2">Detail Pesan / Penawaran Proyek</label>
+                                <textarea rows="4" required placeholder="Tuliskan tanggal event, detail campaign, atau pesan Anda di sini..." class="w-full bg-gray-900 border border-gray-700 focus:border-nevio-gold rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-colors"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-nevio-gold hover:bg-nevio-goldHover text-gray-950 font-extrabold py-4 px-6 rounded-xl shadow-xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2">
+                                <i class="fas fa-paper-plane text-sm"></i>
+                                <span>Kirim Pesan Ke Nevio Management</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black/90 border-t border-gray-900 py-12 text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-nevio-gold text-black font-black flex items-center justify-center">N</div>
+                    <span class="font-extrabold text-white text-lg tracking-wider">NEVIO COMPANY</span>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-xs text-center text-gray-500">
+                    &copy; 2026 Nevio Company Management. All rights reserved. Artist Spotlight: Rayhan Nahya Z.
+                </div>
+
+                <!-- Footer Socials -->
+                <div class="flex items-center gap-4">
+                    <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" class="hover:text-red-500 transition-colors" title="YouTube">
+                        <i class="fab fa-youtube text-lg"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rayhannahyaz1" target="_blank" class="hover:text-pink-500 transition-colors" title="Instagram">
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@rayhannahyaz1" target="_blank" class="hover:text-white transition-colors" title="TikTok">
+                        <i class="fab fa-tiktok text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ARTIST DETAIL MODAL -->
+    <div id="artist-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 sm:p-8 border border-gray-700 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <button onclick="closeArtistModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden border border-nevio-gold shrink-0">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80" alt="Rayhan Nahya Z" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-nevio-gold uppercase">Exclusive Managed Artist</span>
+                        <h3 class="text-2xl font-extrabold text-white">Rayhan Nahya Z</h3>
+                        <p class="text-xs text-gray-400">Content Creator & Performing Musician</p>
+                    </div>
+                </div>
+
+                <div class="space-y-3 text-xs text-gray-300 leading-relaxed border-t border-b border-gray-800 py-4">
+                    <p>
+                        <strong>Rayhan Nahya Z</strong> merupakan talenta utama di bawah Nevio Company yang memfokuskan karirnya pada penciptaan konten visual interaktif dan produksi musik.
+                    </p>
+                    <p>
+                        Dengan jangkauan audiens yang luas di kanal YouTube, Instagram, dan TikTok, Rayhan menyajikan karya yang otentik dan menghibur bagi ribuan pengikutnya.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Tautan Resmi Rayhan Nahya Z:</h4>
+                    <div class="space-y-2">
+                        <a href="https://www.youtube.com/@rayhannahyaz1" target="_blank" class="flex items-center justify-between p-3 rounded-xl bg-red-950/30 border border-red-500/30 text-red-400 hover:bg-red-600 hover:text-white transition-all text-xs font-bold">
+                            <span class="flex items-center gap-2"><i class="fab fa-youtube text-base"></i> YouTube Channel: @rayhannahyaz1</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.instagram.com/rayhannahyaz1" target="_blank" class="flex items-center justify-between p-3 rounded-xl bg-pink-950/30 border border-pink-500/30 text-pink-400 hover:bg-pink-600 hover:text-white transition-all text-xs font-bold">
+                            <span class="flex items-center gap-2"><i class="fab fa-instagram text-base"></i> Instagram: @rayhannahyaz1</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@rayhannahyaz1" target="_blank" class="flex items-center justify-between p-3 rounded-xl bg-gray-900 border border-gray-700 text-gray-200 hover:bg-white hover:text-black transition-all text-xs font-bold">
+                            <span class="flex items-center gap-2"><i class="fab fa-tiktok text-base"></i> TikTok: @rayhannahyaz1</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button onclick="closeArtistModal()" class="w-full bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2.5 rounded-xl text-xs">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scroll to contact
+        function scrollToContact() {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Handle Booking Form Submit
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('form-toast');
+            toast.classList.remove('hidden');
+            
+            // Clear form
+            document.getElementById('booking-form').reset();
+
+            // Hide toast after 6 seconds
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Modal Open / Close Logic
+        function openArtistModal(artistId) {
+            document.getElementById('artist-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArtistModal() {
+            document.getElementById('artist-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside box
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('artist-modal');
+            if (e.target === modal) {
+                closeArtistModal();
+            }
+        });
+    </script>
+</body>
+</html>
